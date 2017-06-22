@@ -22,6 +22,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+//    [self testRuntimeIvar];
 }
 
 
@@ -107,7 +108,12 @@
 }
 //发送消息
 - (void)testRunTimeSendMessage{
-//    Person *p = [[Person alloc] init];
+    Person *p = [[Person alloc] init];
+    
+    //runtime :
+//    objc_msgSend(objc_msgSend("Person" , "alloc"), "init");
+    
+    
 //    objc_msgSend(p,@selector(setName:),@"xiaoming");
 //    objc_msgSend(p, @selector(setAge:), 20);
 }
