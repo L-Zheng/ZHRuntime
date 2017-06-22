@@ -35,7 +35,7 @@ method_exchangeImplementations : 交换2个方法的具体实现
       通过定义在Foudation框架中NSObject中的方法：（数据结构捕获类，分类和协议中声明的信息 NSArray NSDictionary respondsToSelector conformsToProtocol  isMemberOfClass）
       通过直接调用运行时的函数：Class PersonClass = object_getClass([Person class]);
 
-"消息传递机制
+"消息传递机制   消息发送链条
 #import <objc/message.h> : 消息机制
 objc_msgSend(receiver, selector, arg1, arg2, …)
 当一个消息传递给一个对象的时候，消息函数沿着这个对象的isa指针在调度表找到它建立起方法选择器的类结构。如果它不能在这里发现选择器，obic_msgSend根据指针找到它的父类，在父类的调度表中寻找选择器。连续失败导致objc_msgSend沿着类继承结构直到寻找到NSObject类。一旦确定选择器的位置，函数调用表中的方法并且把它传给接收对象的数据结构。
