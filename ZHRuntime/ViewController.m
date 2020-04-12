@@ -34,7 +34,7 @@
 
 
 #pragma mark - 获取某个类的  方法
-//具体的一个减号方法
+//具体的一个减号方法【可以获取本类的方法，也可以获取父类的方法】
 - (void)testRuntimeInstanceList{
     SEL seletor = NSSelectorFromString(@"instanceFunction");
     Method method = class_getInstanceMethod([Person class], seletor);
@@ -42,7 +42,7 @@
     NSString *name = NSStringFromSelector(selector);
     NSLog(@"-方法名---%@----",name);
 }
-//具体的一个加号方法
+//具体的一个加号方法【可以获取本类的方法，也可以获取父类的方法】
 - (void)testRuntimeClassList{
     SEL seletor = NSSelectorFromString(@"classFunction");
     Method method = class_getClassMethod([Person class], seletor);
@@ -50,7 +50,7 @@
     NSString *name = NSStringFromSelector(selector);
     NSLog(@"-方法名---%@----",name);
 }
-//所有减号方法
+//所有减号方法【只能获取本类的方法，获取不到父类的方法】
 //获得的方法中  包含属性的get set方法
 //包含私有的减号方法（没有在头文件暴露）
 //不能获得加号方法（无论有没有在头文件暴露）
@@ -78,7 +78,7 @@
 }
 
 
-#pragma mark - 获取某个类的所有成员变量
+#pragma mark - 获取某个类的所有成员变量【包括本类和父类】
 - (void)testRuntimeIvar{
     // Ivar : 成员变量
     unsigned int count = 0;
